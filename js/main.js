@@ -18,7 +18,17 @@ new Vue({
     addStudent: function () {
       // この function() { } の中にaddStudentメソッド
       // （入力欄に入力された値と、ID値（最後に登録されたID値+1の値）が新たに出現する機能）の処理を書く
-    })
+      // リスト内で一番大きいIDを取得
+      var max = this.students.reduce(function (a, b) {
+        return a > b.id ? a : b.id
+      }, 0)
+      // 新しい配列をリストに追加
+      this.students.push({
+        id: max + 1,
+        name: this.name,
+        cource: this.cource,
+        acceptance_period: this.acceptance_period
+      })
     }
   }
 })
